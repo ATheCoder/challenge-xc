@@ -2,10 +2,9 @@ import express from "express";
 import { Simulator } from "../models/Simulator";
 import cors from "cors";
 
-const app = express();
-app.use(cors());
-
 export const router = express.Router();
+
+router.use(cors());
 
 router.get("/api/simulator", async (req, res) => {
   const simulator = await Simulator.find().lean();
