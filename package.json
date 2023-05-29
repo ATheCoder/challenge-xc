@@ -27,7 +27,7 @@
     "predev": "cd ./devops && docker compose -f docker-compose.local.yml up -d",
     "dev": "ts-node-dev src/api.ts",
     "postdev": "docker compose -f docker-compose.local.yml down",
-    "seed": "ts-node-dev src/scripts/seed.ts",
+    "seed": "ts-node src/scripts/seed.ts",
     "start": "node dist/api.js",
     "build": "tsc -b"
   },
