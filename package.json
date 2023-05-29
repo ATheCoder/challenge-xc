@@ -25,11 +25,11 @@
   },
   "scripts": {
     "predev": "cd ./devops && docker compose -f docker-compose.local.yml up -d",
-    "dev": "ts-node-dev src/api.ts",
+    "dev": "ts-node-dev src/main.ts",
     "postdev": "docker compose -f docker-compose.local.yml down",
     "test": "jest",
     "seed": "ts-node src/scripts/seed.ts",
-    "start": "node dist/api.js",
+    "start": "node dist/main.js",
     "build": "tsc -b",
     "lint": "eslint . --ext .ts,.tsx"
   },
