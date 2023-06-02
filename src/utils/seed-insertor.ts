@@ -1,8 +1,11 @@
+import mongoose from "mongoose";
 import { Favorite } from "../models/Favorite";
 import { Profile } from "../models/Profile";
 import { Simulator } from "../models/Simulator";
 
 export const insertSeedData = async () => {
+  await mongoose.connection.db.dropDatabase();
+
   const profile = new Profile({
     name: `String`,
     email: `String`,
