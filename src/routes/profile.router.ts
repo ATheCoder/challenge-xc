@@ -1,5 +1,6 @@
 import express from "express";
 import { Profile } from "../models/Profile";
+import { z } from "zod";
 
 export const router = express.Router();
 
@@ -9,16 +10,31 @@ router.get("/api/profile", async (req, res) => {
   res.json({ profile });
 });
 
-router.post("/api/profile", async (req, res) => {
-  const { email, name, nickname } = req.body;
+const createProfileValidationSchema = z
+  .object({
+    email: z.string().email().toLowerCase(),
+    name: z.string(),
+    nickname: z.string().toLowerCase(),
+  })
+  .required()
+  .strict();
 
-  let profile = await Profile.findOne({
-    $or: [{ email }, { nickname }],
-  }).exec();
+router.post("/api/profile", async (req, res, next) => {
+  try {
+    const validatedBody = createProfileValidationSchema.parse(req.body);
 
-  if (!profile) {
-    profile = await Profile.create({ name, email, nickname });
+    const { email, name, nickname } = validatedBody;
+
+    let profile = await Profile.findOne({
+      $or: [{ email }, { nickname }],
+    }).exec();
+
+    if (!profile) {
+      profile = await Profile.create({ name, email, nickname });
+    }
+
+    res.json(profile);
+  } catch (e) {
+    next(e);
   }
-
-  res.json(profile);
 });
