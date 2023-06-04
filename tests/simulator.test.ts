@@ -81,5 +81,32 @@ describe('Tests for the "Simulator" functionality', () => {
 
       expect(createSimulatorRes.text).toBe("Input Error: ProfileId");
     });
+
+    it("should not create simulator when invalid cryptocurrency is provided", async () => {
+      const createSimulatorRes = await agent
+        .post(`/api/simulator/${profileId}`)
+        .send({
+          cryptocurrency: "doge",
+          euros: 100,
+          price: 27000,
+          quantity: 1,
+        });
+
+      expect(createSimulatorRes.status).toBe(400);
+
+      expect(createSimulatorRes.body).toStrictEqual({
+        issues: [
+          {
+            code: "invalid_enum_value",
+            message:
+              "Invalid enum value. Expected 'eth' | 'bitcoin', received 'doge'",
+            options: ["eth", "bitcoin"],
+            path: ["cryptocurrency"],
+            received: "doge",
+          },
+        ],
+        name: "ZodError",
+      });
+    });
   });
 });

@@ -2,6 +2,7 @@ import express from "express";
 import { Simulator } from "../models/Simulator";
 import cors from "cors";
 import { checkIfProfileIdExists } from "../services/profile.service";
+import { createSimulatorSchema } from "../validators/simulator";
 
 export const router = express.Router();
 
@@ -28,12 +29,13 @@ router.post("/api/simulator/:profile_id", async (req, res, next) => {
     const { profile_id } = req.params;
     await checkIfProfileIdExists(profile_id);
 
-    const newData = {
-      ...req.body,
+    const createSimulatorData = createSimulatorSchema.parse(req.body);
+
+    console.log(createSimulatorData);
+    const simulator = await Simulator.create({
+      ...createSimulatorData,
       profile_id,
-    };
-    console.log(newData);
-    const simulator = await Simulator.create(newData);
+    });
     res.json(simulator);
   } catch (e) {
     next(e);
