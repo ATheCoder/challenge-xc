@@ -4,7 +4,7 @@ import { mongoIdRegex } from "./utils";
 
 const agent = request(app);
 
-describe('Testing "Favority" functionality', () => {
+describe('Testing "Favorite" functionality', () => {
   it("should return the list of seed favorities", async () => {
     const res = await agent.get("/api/favorite");
 
