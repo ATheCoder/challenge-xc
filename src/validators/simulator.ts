@@ -1,6 +1,5 @@
 import { z } from "zod";
-
-const availableCryptoCurrencies = ["eth", "bitcoin"] as const;
+import { availableCryptoCurrencies } from "../constants";
 
 export const createSimulatorSchema = z
   .object({
