@@ -13,12 +13,9 @@ export const insertSeedData = async () => {
     divisa: `String`,
     prefered_cryptocurrency: `String`,
   });
-  await profile.save();
+  const savedProfile = await profile.save();
 
-  const query = { _id: "6093abb3dfd9da1deeae56f2" };
-  const idProfile = await Profile.findOne(query).then((e) => {
-    return e?._id;
-  });
+  const idProfile = savedProfile._id;
 
   const simulator = new Simulator({
     profile_id: idProfile,
