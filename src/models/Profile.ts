@@ -7,10 +7,11 @@ const schema = new Schema({
   name: String,
   nickname: String,
   email: String,
-  capital: Number,
+  capital: { type: Number, default: 0 },
   divisa: {
     type: String,
     enum: availableDivisia,
+    default: "USD",
   },
   prefered_cryptocurrency: {
     type: String,

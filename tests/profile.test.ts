@@ -74,6 +74,7 @@ describe("Profile Tests", () => {
       email: "email@gmail.com",
       nickname: "testerer",
       name: "Yellow Tester",
+      capital: 5000, // This shouldn't work :P
     });
 
     expect(res.status).toBe(200);
@@ -81,6 +82,8 @@ describe("Profile Tests", () => {
       email: "email@gmail.com",
       name: "Yellow Tester",
       nickname: "testerer",
+      capital: 0,
+      divisa: "USD",
     });
   });
 });

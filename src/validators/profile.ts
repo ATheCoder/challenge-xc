@@ -7,4 +7,4 @@ export const createProfileValidationSchema = z
     nickname: z.string().toLowerCase(),
   })
   .required()
-  .strict();
+  .strip();
