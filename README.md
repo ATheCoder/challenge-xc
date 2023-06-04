@@ -18,3 +18,6 @@ To me, the idea of production ready code is one that:
     b. **Monitoring**: The functionality for this codebase is pretty limited and I couldn't exactly discern what was the use case (Maybe something to do with simulating Buying crypto?) but depending on the use case solutions such as Prometheus with Grafana might be good for monitoring.
 
 6. **Scaleable**: This has both a devops aspect to it and a development aspect and is really where true backend engineering shines. In terms of devops containerizing the project and making Kubernetes deployments can go a long way toward scalability but this is only true if the code allows for such scalability. There might be functionalities that can be extracted into microservices or queues with worker containers (Think BullMQ, RabbitMQ, etc.). However, I find that this project currently does not have any needs in this area.
+
+
+The exact changes can be found in the [Commit Log](https://github.com/ATheCoder/challenge-xc/commits/master) I have tried using concise commit messages and explanation of _Why(s)_ wherever warranted.
