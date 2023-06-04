@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0.6
+    volumes:
+      - mongodb_data:/data/db
+  backend:
+    build:
+      context: ..
+    environment:
+      - DBURL=mongodb://mongo:27017
+      - PORT=8085
+
+volumes:
+  mongodb_data:

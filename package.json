@@ -31,8 +31,8 @@
     "test": "jest -i",
     "test:local": "DBURL=mongodb://localhost:27025 jest --watch",
     "seed": "ts-node src/scripts/seed.ts",
-    "start": "node dist/main.js",
-    "build": "tsc -b",
+    "start": "node dist/src/main.js",
+    "build": "tsc",
     "lint": "eslint . --ext .ts,.tsx"
   },
   "devDependencies": {
