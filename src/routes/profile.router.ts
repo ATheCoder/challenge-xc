@@ -1,6 +1,6 @@
 import express from "express";
 import { Profile } from "../models/Profile";
-import { z } from "zod";
+import { createProfileValidationSchema } from "../validators/profile";
 
 export const router = express.Router();
 
@@ -9,15 +9,6 @@ router.get("/api/profile", async (req, res) => {
   console.log(profile);
   res.json({ profile });
 });
-
-const createProfileValidationSchema = z
-  .object({
-    email: z.string().email().toLowerCase(),
-    name: z.string(),
-    nickname: z.string().toLowerCase(),
-  })
-  .required()
-  .strict();
 
 router.post("/api/profile", async (req, res, next) => {
   try {
