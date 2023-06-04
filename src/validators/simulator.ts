@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { availableCryptoCurrencies } from "../constants";
+import { availableCryptoCurrencies, availableDivisia } from "../constants";
 
 export const createSimulatorSchema = z
   .object({
     cryptocurrency: z.enum(availableCryptoCurrencies),
-    euros: z.number(),
+    divisa: z.enum(availableDivisia),
     price: z.number(),
     quantity: z.number(),
   })

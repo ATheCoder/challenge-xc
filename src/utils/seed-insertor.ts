@@ -19,11 +19,10 @@ export const insertSeedData = async () => {
 
   const simulator = new Simulator({
     profile_id: idProfile,
-    name: `String`,
-    start_date: `01/05/2021`,
-    check_date: `01/05/2021`,
-    cryptocurrency: `String`,
-    divisa: `String`,
+    dateRecorded: new Date(2023, 1, 15, 16, 0, 0, 0),
+    cryptocurrency: `eth`,
+    divisa: `USD`,
+    price: 27000,
   });
   await simulator.save();
 

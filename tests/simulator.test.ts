@@ -15,7 +15,7 @@ describe('Tests for the "Simulator" functionality', () => {
     expect(simulators).toHaveLength(1);
 
     expect(simulators[0]).toMatchObject({
-      cryptocurrency: "String",
+      cryptocurrency: "eth",
     });
   });
 
@@ -39,7 +39,7 @@ describe('Tests for the "Simulator" functionality', () => {
       expect(res.body).toHaveLength(1);
 
       expect(res.body[0]).toMatchObject({
-        cryptocurrency: "String",
+        cryptocurrency: "eth",
         profile_id: profileId,
       });
     });
@@ -49,11 +49,11 @@ describe('Tests for the "Simulator" functionality', () => {
         .post(`/api/simulator/${profileId}`)
         .send({
           cryptocurrency: "eth",
-          euros: 100,
+          divisa: "EUR",
           price: 27000,
           quantity: 1,
         });
-
+      console.log(createSimulatorRes.text);
       expect(createSimulatorRes.status).toBe(200);
 
       const getSimulatorsRes = await agent.get(`/api/simulator/${profileId}`);
@@ -87,7 +87,7 @@ describe('Tests for the "Simulator" functionality', () => {
         .post(`/api/simulator/${profileId}`)
         .send({
           cryptocurrency: "doge",
-          euros: 100,
+          divisa: "USD",
           price: 27000,
           quantity: 1,
         });
@@ -99,8 +99,8 @@ describe('Tests for the "Simulator" functionality', () => {
           {
             code: "invalid_enum_value",
             message:
-              "Invalid enum value. Expected 'eth' | 'bitcoin', received 'doge'",
-            options: ["eth", "bitcoin"],
+              "Invalid enum value. Expected 'bitcoin' | 'eth', received 'doge'",
+            options: ["bitcoin", "eth"],
             path: ["cryptocurrency"],
             received: "doge",
           },
