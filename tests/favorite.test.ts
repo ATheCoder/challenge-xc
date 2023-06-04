@@ -13,9 +13,7 @@ describe('Testing "Favority" functionality', () => {
     expect(res.body["favorite"]).toHaveLength(1);
 
     expect(res.body["favorite"][0]).toMatchObject({
-      favorite1: "String",
-      favorite2: "String",
-      favorite3: "String",
+      favorites: ["favorite1", "favorite2", "favorite3"],
       name: "String",
     });
   });
@@ -40,9 +38,7 @@ describe('Testing "Favority" functionality', () => {
       expect(res.body).toHaveLength(1);
 
       expect(res.body[0]).toMatchObject({
-        favorite1: "String",
-        favorite2: "String",
-        favorite3: "String",
+        favorites: ["favorite1", "favorite2", "favorite3"],
         name: "String",
         profile_id: profileId,
       });

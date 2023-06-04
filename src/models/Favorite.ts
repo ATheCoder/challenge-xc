@@ -9,9 +9,7 @@ const schema = new Schema(
       ref: "Profile",
     },
     name: String,
-    favorite1: String,
-    favorite2: String,
-    favorite3: String,
+    favorites: [String],
   },
   {
     timestamps: true,

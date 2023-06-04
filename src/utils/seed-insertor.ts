@@ -32,9 +32,7 @@ export const insertSeedData = async () => {
   const favorite = new Favorite({
     profile_id: idProfile,
     name: `String`,
-    favorite1: `String`,
-    favorite2: `String`,
-    favorite3: `String`,
+    favorites: ["favorite1", "favorite2", "favorite3"],
   });
   await favorite.save();
 };
