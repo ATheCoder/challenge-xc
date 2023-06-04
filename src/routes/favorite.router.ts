@@ -11,10 +11,7 @@ favoritesRouter.get("/", async (req, res) => {
 
 favoritesRouter.get("/:profile_id", async (req, res) => {
   console.log(req.params);
-  let query = {};
   const { profile_id } = req.params;
-  query = { profile_id };
-  console.log(query);
-  const data = await Favorite.find(query);
+  const data = await Favorite.find({ profile_id });
   res.json(data);
 });
