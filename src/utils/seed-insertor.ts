@@ -7,11 +7,11 @@ export const insertSeedData = async () => {
   await mongoose.connection.db.dropDatabase();
 
   const profile = new Profile({
-    name: `String`,
-    email: `String`,
-    capital: `123`,
-    divisa: `String`,
-    prefered_cryptocurrency: `String`,
+    name: `John Smith`,
+    email: `jsmith@gmail.com`,
+    capital: 25000,
+    divisa: `USD`,
+    prefered_cryptocurrency: `bitcoin`,
   });
   const savedProfile = await profile.save();
 

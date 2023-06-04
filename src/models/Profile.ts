@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { availableCryptoCurrencies, availableDivisia } from "../constants";
 
 const { Schema } = mongoose;
 
@@ -7,8 +8,14 @@ const schema = new Schema({
   nickname: String,
   email: String,
   capital: Number,
-  divisa: String,
-  prefered_cryptocurrency: String,
+  divisa: {
+    type: String,
+    enum: availableDivisia,
+  },
+  prefered_cryptocurrency: {
+    type: String,
+    enum: availableCryptoCurrencies,
+  },
 });
 
 export const Profile = mongoose.model("Profile", schema);

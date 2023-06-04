@@ -11,11 +11,11 @@ describe("Profile Tests", () => {
     expect(res.body).toMatchObject({
       profile: [
         {
-          capital: 123,
-          divisa: "String",
-          email: "String",
-          name: "String",
-          prefered_cryptocurrency: "String",
+          capital: 25000,
+          divisa: "USD",
+          email: "jsmith@gmail.com",
+          name: "John Smith",
+          prefered_cryptocurrency: "bitcoin",
         },
       ],
     });
