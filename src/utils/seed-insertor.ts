@@ -24,8 +24,6 @@ export const insertSeedData = async () => {
     check_date: `01/05/2021`,
     cryptocurrency: `String`,
     divisa: `String`,
-    Crypto_price_start: `123`,
-    Crypto_price_check: `123`,
   });
   await simulator.save();
 
