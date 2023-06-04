@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 
 const schema = new Schema(
   {
-    profile_id: Schema.Types.ObjectId,
+    profile_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Profile",
+    },
     dateRecorded: Date,
     cryptocurrency: String,
     euros: Number,
