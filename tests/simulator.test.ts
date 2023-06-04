@@ -66,5 +66,20 @@ describe('Tests for the "Simulator" functionality', () => {
 
       expect(createdSimulator).toBeTruthy();
     });
+
+    it("creating simulator for a none existing profile_id should not work", async () => {
+      const createSimulatorRes = await agent
+        .post(`/api/simulator/647cb83c9fa19c730cce8e3f`)
+        .send({
+          cryptocurrency: "eth",
+          euros: 100,
+          price: 27000,
+          quantity: 1,
+        });
+
+      expect(createSimulatorRes.status).toBe(400);
+
+      expect(createSimulatorRes.text).toBe("Input Error: ProfileId");
+    });
   });
 });
